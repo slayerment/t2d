@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Custom 3-Week T2D Experiment – Lower Your Blood Sugar Around Your Real Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --bg-alt: #e5e7eb;
+      --card-bg: #ffffff;
+      --accent: #16a34a;
+      --accent-soft: rgba(22, 163, 74, 0.08);
+      --accent-strong: #15803d;
+      --text: #111827;
+      --text-soft: #4b5563;
+      --border-subtle: #e5e7eb;
+      --muted: #6b7280;
+      --section-spacing: 80px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #ffffff 0, #eef2ff 40%, #e5e7eb 100%);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      font-size: 19px;
+    }
+
+    .page {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 32px 24px 96px;
+    }
+
+    /* Brand bar with logo */
+    .brand-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .brand-logo {
+      max-height: 100px;
+      width: auto;
+      display: block;
+    }
+
+    header {
+      margin-bottom: var(--section-spacing);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.06);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      color: #1d4ed8;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 3.6vw, 3.0rem);
+      line-height: 1.05;
+      margin: 18px 0 18px;
+      letter-spacing: -0.04em;
+      color: #0f172a;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 2.6vw, 2.2rem);
+      margin: 0 0 16px;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+      color: #111827;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--text-soft);
+      font-size: 1.08rem;
+    }
+
+    strong {
+      color: #111827;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-subhead {
+      font-size: 1.1rem;
+      color: var(--text-soft);
+      max-width: 40rem;
+    }
+
+    .hero-meta {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hero-meta span {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .price-pill {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      font-size: 0.9rem;
+      color: #111827;
+    }
+
+    .price-pill strong {
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    .trust-line {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .hero-cta {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      background: radial-gradient(circle at top left, var(--accent) 0, var(--accent-strong) 45%, #15803d 100%);
+      color: #ecfdf3;
+      box-shadow: 0 12px 30px rgba(22, 163, 74, 0.35);
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, filter 0.12s ease-out;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary span.arrow {
+      font-size: 1.2rem;
+      transform: translateY(1px);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+      box-shadow: 0 18px 40px rgba(22, 163, 74, 0.45);
+    }
+
+    .btn-ghost {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      color: #111827;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-ghost:hover {
+      background: #f9fafb;
+    }
+
+    .hero-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 24px 22px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-heart {
+      position: absolute;
+      top: -18px;
+      right: 18px;
+      font-size: 90px;
+      background: linear-gradient(135deg, #ef4444 0%, #f97373 50%, #fecaca 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      transform: rotate(-20deg);
+      text-shadow: 0 10px 22px rgba(248, 113, 113, 0.35);
+      pointer-events: none;
+      opacity: 0.95;
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-card-metric {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      color: #111827;
+    }
+
+    .hero-card-note {
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      margin-bottom: 16px;
+    }
+
+    .hero-card-list {
+      margin: 0;
+      padding-left: 18px;
+      margin-bottom: 10px;
+      font-size: 0.98rem;
+      color: var(--text-soft);
+    }
+
+    .hero-card-list li {
+      margin-bottom: 5px;
+    }
+
+    .hero-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      border: 1px solid #e5e7eb;
+      color: var(--muted);
+      background: #f9fafb;
+    }
+
+    .pill.green {
+      border-color: rgba(22, 163, 74, 0.6);
+      color: var(--accent-strong);
+      background: var(--accent-soft);
+    }
+
+    section {
+      margin-bottom: var(--section-spacing);
+    }
+
+    .section-narrow {
+      max-width: 840px;
+    }
+
+    .section-wide {
+      max-width: 950px;
+    }
+
+    /* FULL-WIDTH band sections with radial green gradient */
+    .section-band {
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      width: 100vw;
+      background: radial-gradient(circle at top left,
+        rgba(22, 163, 74, 0.18) 0,
+        #ecfdf5 45%,
+        #e5f9f0 100%);
+      padding: 32px 24px;
+      box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.14) inset;
+    }
+
+    .section-band h2 {
+      text-align: center;
+    }
+
+    /* Stronger, centered accent card for the $29 section */
+    .section-muted {
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 28px;
+      padding: 32px 28px;
+      background: radial-gradient(circle at top left, rgba(22, 163, 74, 0.18) 0, #ecfdf5 45%, #e5f9f0 100%);
+      border: 1px solid rgba(22, 163, 74, 0.35);
+      box-shadow: 0 22px 48px rgba(22, 163, 74, 0.25);
+    }
+
+    .section-muted h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .section-muted > p:first-of-type {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+    .three-step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .step-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 20px 18px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.03);
+    }
+
+    .step-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .step-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .step-header-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .step-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .step-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 0 0 10px;
+      color: var(--text-soft);
+      font-size: 0.98rem;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .inline-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #166534;
+      font-size: 0.9rem;
+      border: 1px solid rgba(22, 163, 74, 0.4);
+    }
+
+    .image-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* FAQ accordion styles */
+    .accordion {
+      max-width: 840px;
+      margin-top: 18px;
+    }
+
+    .accordion-item {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.04);
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .accordion-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #111827;
+      text-align: left;
+    }
+
+    .accordion-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .accordion-item summary::after {
+      content: "▾";
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-left: 12px;
+      transition: transform 0.15s ease-out;
+    }
+
+    .accordion-item[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    .accordion-body {
+      padding: 0 16px 14px 16px;
+      border-top: 1px solid #e5e7eb;
+      font-size: 0.98rem;
+      color: var(--text-soft);
+      text-align: left;
+    }
+
+    .accordion-body p {
+      margin-top: 10px;
+    }
+
+    .accordion-body ul {
+      margin-top: 6px;
+    }
+
+    .footer-cta {
+      margin-top: 40px;
+      border-radius: 24px;
+      padding: 28px 24px;
+      background: linear-gradient(to bottom right, rgba(22, 163, 74, 0.06), #ffffff);
+      border: 1px solid rgba(22, 163, 74, 0.35);
+      text-align: center;
+    }
+
+    .footer-cta h2 {
+      margin-bottom: 10px;
+    }
+
+    .footer-cta p {
+      max-width: 620px;
+      margin: 0 auto 18px;
+    }
+
+    /* Shared 2-column text layout with vertical border */
+    .columns-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px;
+      margin-top: 18px;
+    }
+
+    .columns-2 .col {
+      padding-left: 24px;
+      border-left: 1px solid #e5e7eb;
+    }
+
+    .columns-2 .col:first-child {
+      border-left: none;
+      padding-left: 0;
+    }
+
+    .columns-2 .col-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .columns-2 .col h3 {
+      margin-bottom: 6px;
+    }
+
+    /* Food image figures */
+    .food-figure {
+      background: #ffffff;
+      border-radius: 18px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.04);
+      padding: 10px 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .food-figure img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .food-figure figcaption {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #374151;
+      margin-top: 4px;
+      text-align: center;
+    }
+
+    /* Stack carbs/protein images vertically and center them */
+    .why-images {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    /* Medications section image */
+    .med-figure {
+      background: #ffffff;
+      border-radius: 18px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .med-figure img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Med cards (for insulin vs not causing lows) */
+    .med-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .med-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 16px 16px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    /* Simple day grid */
+    .simple-day-wrap {
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .simple-day-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .simple-day-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 16px 14px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.04);
+      text-align: left;
+    }
+
+    .simple-day-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .simple-day-pill-row {
+      justify-content: center;
+    }
+
+    /* Meal carousel */
+    .meal-section-heading {
+      text-align: center;
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    .meal-carousel-wrapper {
+      position: relative;
+      margin-top: 18px;
+    }
+
+    .meal-carousel {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 8px 40px;
+    }
+
+    .meal-carousel::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .meal-carousel::-webkit-scrollbar-thumb {
+      background: #d1d5db;
+      border-radius: 999px;
+    }
+
+    .meal-carousel img {
+      flex: 0 0 auto;
+      width: 260px;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.25);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #111827;
+    }
+
+    .carousel-btn.left {
+      left: 4px;
+    }
+
+    .carousel-btn.right {
+      right: 4px;
+    }
+
+    .carousel-btn:hover {
+      background: #f3f4f6;
+    }
+
+    /* Centered FAQ section */
+    .section-faq-center {
+      text-align: center;
+    }
+
+    .section-faq-center .accordion {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Centered goal text under first band */
+    .section-goal {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.04rem;
+      color: var(--text-soft);
+    }
+
+    .section-goal strong {
+      color: #111827;
+    }
+
+    /* About photo + X link */
+    .about-photo {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 10px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+      max-width: 360px;
+      margin: 0 auto 12px;
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .x-link-wrap {
+      text-align: center;
+    }
+
+    .x-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      font-size: 0.9rem;
+      color: #111827;
+      text-decoration: none;
+    }
+
+    .x-badge:hover {
+      background: #f3f4f6;
+    }
+
+    .x-icon-img {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      object-fit: contain;
+      display: inline-block;
+    }
+
+    /* Site footer */
+    .site-footer {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: inline-flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #4b5563;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1100px) {
+      .simple-day-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-card {
+        margin-top: 16px;
+      }
+      .three-step-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .image-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .columns-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .columns-2 .col {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid #e5e7eb;
+        padding-top: 16px;
+      }
+      .columns-2 .col:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+      .med-cards {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .page {
+        padding: 24px 18px 72px;
+      }
+      section {
+        margin-bottom: 60px;
+      }
+      .section-band {
+        padding: 24px 18px;
+      }
+      .site-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .simple-day-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .meal-carousel {
+        padding: 8px 30px;
+      }
+      .brand-logo {
+        max-height: 70px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.1rem;
+      }
+      h2 {
+        font-size: 1.6rem;
+      }
+      .btn-primary {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+      .btn-ghost {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+      .hero-cta {
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- BRAND / LOGO -->
+    <div class="brand-bar">
+      <img
+        src="https://lh3.googleusercontent.com/sitesv/AAzXCkfay-MG9OLkbWlRafj7vMCaBVFXxMOkVq_CS3yVu3tbzFdOk_97IisXaPupC70p_9rQpwoNBXE8cQyH0BROgVrmorpCPdNX568aENZhDM8rwQZvqU9E0TMkA_wY0NU1u1Re-nf11SfVKACbQZ8waf7-iITawu_DsrrAA1MhzHN42dZm8vdZxFvL=w1280"
+        alt="Happy Healing logo"
+        class="brand-logo"
+      />
+    </div>
+
+    <!-- HERO -->
+    <header>
+      <div class="hero-layout">
+        <div>
+          <div class="badge">
+            <span class="badge-dot"></span>
+            <span>Custom 3-week T2D experiment</span>
+          </div>
+
+          <h1>Lower your blood sugar with a plan built around your real life.</h1>
+
+          <p class="hero-subhead">
+            You fill out a short intake, I build a <strong>custom 3-week plan</strong> around your routine, preferences, and meds&mdash;so you can use food and walking to aim for <strong>less medication</strong> and better numbers.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#start" class="btn-primary">
+              <span>Start Your 3-Week Experiment</span>
+              <span class="arrow">→</span>
+            </a>
+            <a href="#how-it-works" class="btn-ghost">
+              <div>How It Works</div>
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <div class="price-pill">
+              <span>Intro price:</span>
+              <strong>$29 one-time</strong>
+              <span>no subscription</span>
+            </div>
+            <span class="trust-line">
+              Built by someone who lowered his own A1C and helped his spouse do the same.
+            </span>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-card-heart">♥</div>
+          <div class="hero-card-title">Success signal we care about</div>
+          <div class="hero-card-metric">
+            <span>“We can lower this dose.”</span>
+          </div>
+          <p class="hero-card-note">
+            The main win we’re aiming for is simple: your numbers improve enough that your doctor can talk about <strong>reducing meds over time</strong>, not piling more on.
+          </p>
+          <ul class="hero-card-list">
+            <li>Custom plan built around your routine</li>
+            <li>Lower carbs, more meat/protein, simple walks</li>
+            <li>Clear way to track fasting &amp; post-meal readings</li>
+          </ul>
+          <div class="hero-tag-row">
+            <div class="pill green">Lifestyle first</div>
+            <div class="pill">Type 2 &amp; pre-diabetes</div>
+            <div class="pill">Realistic, not perfect</div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <!-- CORE PROMISE WITH BAND + 2 COLUMNS -->
+    <section class="section-band">
+      <div class="section-narrow section-wide" style="margin:0 auto;">
+        <h2>Not a one-size-fits-all diet. A custom experiment for <em>your</em> life.</h2>
+        <div class="columns-2">
+          <div class="col">
+            <div class="col-title">The usual problem</div>
+            <h3>Generic advice that ignores your reality</h3>
+            <p>
+              Most advice for type 2 diabetes is generic:
+              <br /><strong>“Eat better. Move more. Lose weight.”</strong>
+            </p>
+            <p>
+              It ignores your schedule, your family, your job, and the foods you’ll <em>actually</em> eat. You get handed vague ideas instead of a plan that fits into your day.
+            </p>
+          </div>
+          <div class="col">
+            <div class="col-title">What this does differently</div>
+            <h3>A plan designed to live inside your life</h3>
+            <p>
+              This experiment is different:
+              <br /><strong>You tell me how you live now.</strong> I build a <strong>simple, realistic plan</strong> that fits inside that life, not against it.
+            </p>
+          </div>
+        </div>
+
+        <p class="section-goal">
+          The goal is clear:
+          <br />
+          <strong>Use that plan to improve your numbers enough that your doctor can talk about reducing meds over time.</strong>
+        </p>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works">
+      <div style="text-align:center; max-width:840px; margin:0 auto;">
+        <h2>How the 3-week experiment works</h2>
+        <p>
+          This isn’t a generic PDF. It’s a <strong>custom 3-week lifestyle experiment</strong> built around your real life.
+        </p>
+      </div>
+
+      <div class="three-step-grid">
+        <div class="step-card">
+          <div class="step-card-header">
+            <div class="step-icon">📝</div>
+            <div class="step-header-text">
+              <div class="step-label">Step 1</div>
+              <div class="step-title">Fill out a short intake (5–7 minutes)</div>
+            </div>
+          </div>
+          <p>
+            After you pay, you answer a few easy questions so I can see how you actually live:
+          </p>
+          <ul>
+            <li>When you wake, work, and sleep</li>
+            <li>What you usually eat now (no judgment)</li>
+            <li>Foods you like and absolutely won’t eat</li>
+            <li>How much you can realistically walk or move</li>
+            <li>What meds you’re on (high level)</li>
+            <li>Your main goals: lower numbers, less meds, more energy, or all of the above</li>
+          </ul>
+          <p class="note">
+            No essays. Just clear, practical info so I can build something you’ll actually follow.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-card-header">
+            <div class="step-icon">🧩</div>
+            <div class="step-header-text">
+              <div class="step-label">Step 2</div>
+              <div class="step-title">I build your custom plan</div>
+            </div>
+          </div>
+          <p>
+            Using your answers, I put together a <strong>3-week plan tailored to you</strong>:
+          </p>
+          <ul>
+            <li>Meal structure that fits your schedule, not some fantasy routine</li>
+            <li>How low to go on carbs to start (without blowing up your life)</li>
+            <li>Exactly when it makes sense for <em>you</em> to walk (mornings, after dinner, etc.)</li>
+            <li>When to check fasting and post-meal glucose</li>
+            <li>Simple scripts to talk to your doctor if your numbers improve</li>
+          </ul>
+          <p class="note">
+            This is the manual version of what the future <strong>AI intake</strong> will do: turn your story and routine into a focused, data-driven experiment.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-card-header">
+            <div class="step-icon">📊</div>
+            <div class="step-header-text">
+              <div class="step-label">Step 3</div>
+              <div class="step-title">You run the experiment &amp; watch your numbers</div>
+            </div>
+          </div>
+          <p>
+            For 3 weeks, you:
+          </p>
+          <ul>
+            <li>Follow the plan as best you can</li>
+            <li>Track fasting glucose each morning and a few post-meal readings</li>
+            <li>Note any med adjustments your doctor makes</li>
+            <li>Notice energy, cravings, sleep, and mood</li>
+          </ul>
+          <p>
+            The main success sign we’re watching for:
+          </p>
+          <p class="note">
+            <strong>Your numbers improve enough that your doctor says, “These doses might be too strong now—let’s talk about lowering them.”</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT YOU GET / PRICE (accent card) -->
+    <section id="start">
+      <div class="section-narrow section-muted">
+        <h2>What you get for $29 (one-time)</h2>
+        <p>
+          For less than a takeout meal, you get:
+        </p>
+        <div class="columns-2">
+          <div class="col">
+            <ul>
+              <li>A <strong>custom 3-week T2D plan</strong> based on your intake</li>
+              <li>Clear food guidelines and example plates you’ll actually eat</li>
+              <li>A realistic walking / movement plan matched to your capacity</li>
+            </ul>
+          </div>
+          <div class="col">
+            <ul>
+              <li>A simple blood sugar tracking framework (no spreadsheet hell)</li>
+              <li>“Talk to your doctor” scripts focused on <strong>reducing meds</strong> safely</li>
+              <li>Optional ideas for “Journey 2” (like eating less often) once you’re ready</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note" style="text-align:center; margin-top: 10px;">
+          <strong>No subscription. No upsell wall.</strong> Just a focused experiment shaped around <strong>your</strong> life.
+        </p>
+
+        <div style="margin-top: 18px; text-align:center;">
+          <a href="#" class="btn-primary">
+            <span>Start Your 3-Week Experiment – $29</span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY IT WORKS -->
+    <section>
+      <div class="two-col">
+        <div>
+          <h2>Why this can move your numbers fast</h2>
+          <p>
+            Type 2 diabetes = <strong>too much sugar in your system for too long.</strong>
+          </p>
+          <p>
+            Most of that sugar comes from <strong>carbs</strong>:
+          </p>
+          <ul>
+            <li>Bread, pasta, rice</li>
+            <li>Cereal, crackers, chips</li>
+            <li>Juice, soda, sweets</li>
+            <li>Snack bars and baked goods</li>
+          </ul>
+          <p>
+            All carbs break down into sugar in your blood.
+          </p>
+          <p>
+            In your plan we’ll:
+          </p>
+          <ul>
+            <li><strong>Lower carbs</strong> hard enough to matter</li>
+            <li>Build your meals around <strong>protein/meat and low-sugar foods</strong></li>
+            <li>Add walking where it actually fits your day</li>
+          </ul>
+          <p>
+            Walking (especially after meals) helps your muscles <strong>pull sugar out of your blood</strong> and use it.
+          </p>
+          <p>
+            <strong>Biggest lever by far: what you eat.</strong> Walking is the simple helper that makes it even more powerful.
+          </p>
+        </div>
+
+        <div>
+          <div class="why-images">
+            <figure class="food-figure">
+              <img src="https://cdn.betterme.world/articles/wp-content/uploads/2022/02/shutterstock_1474022675.jpg" alt="Example carbohydrate foods such as bread, rice, pasta, and other starches." />
+              <figcaption>Example Carbs</figcaption>
+            </figure>
+            <figure class="food-figure">
+              <img src="https://media.mealprep.com.au/wp-content/uploads/2020/02/animal-protein-sources-guide.jpg" alt="Example animal protein and meat sources like beef, chicken, fish, and eggs." />
+              <figcaption>Example Protein/Meat</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPECTATIONS WITH BAND -->
+    <section class="section-band">
+      <div class="section-narrow" style="margin:0 auto;">
+        <h2>What you can realistically expect in 2–3 weeks</h2>
+        <div class="columns-2">
+          <div class="col">
+            <div class="col-title">How it often feels</div>
+            <p>
+              If you commit to your custom plan&mdash;<strong>low carbs, more protein/meat, and walking most days</strong>&mdash;many people notice:
+            </p>
+            <ul>
+              <li>Fasting glucose starting to drift down</li>
+              <li>Smaller spikes after meals</li>
+              <li>More stable energy and fewer crashes</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="col-title">What the numbers might do</div>
+            <p>
+              A common pattern (not a promise):
+              <br /><strong>Fasting glucose dropping ~20–30 points within 2–3 weeks</strong> when people really cut carbs and follow the plan.
+            </p>
+            <p>
+              Everyone’s situation is different. But the goal is the same:
+              <br /><strong>visible movement in your numbers that your doctor can’t ignore.</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAMPLE DAY -->
+    <section>
+      <div class="simple-day-wrap">
+        <h2>A simple day on your plan</h2>
+        <p>
+          The exact details will be customized, but here’s the kind of rhythm you can expect.
+        </p>
+
+        <div class="simple-day-grid">
+          <div class="simple-day-card">
+            <h3>Morning</h3>
+            <ul>
+              <li>Wake up → check fasting blood sugar</li>
+              <li>Breakfast: high-protein, low-carb (if you eat breakfast)</li>
+              <li>Optional: 10–20-minute walk</li>
+            </ul>
+          </div>
+
+          <div class="simple-day-card">
+            <h3>Midday</h3>
+            <ul>
+              <li>Lunch built around <strong>meat or fish + low-carb veggies</strong></li>
+              <li>Short walk if possible</li>
+            </ul>
+          </div>
+
+          <div class="simple-day-card">
+            <h3>Afternoon / Evening</h3>
+            <ul>
+              <li>Dinner similar: meat/protein first, carbs minimal</li>
+              <li>10–20-minute walk after your largest meal if you can</li>
+            </ul>
+          </div>
+
+          <div class="simple-day-card">
+            <h3>Blood sugar checks</h3>
+            <ul>
+              <li>Fasting each morning</li>
+              <li>1–2 times a day, 1–2 hours after a meal (especially higher-carb ones if/when you have them)</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="note" style="margin-top:16px;">
+          Your actual plan will be adjusted based on your intake answers (your schedule, what you like to eat, and how much you can move).
+        </p>
+
+        <div class="pill-row simple-day-pill-row" style="margin-top: 16px;">
+          <span class="inline-highlight">
+            Change your plate. Add short walks. Track simple numbers.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEAL IMAGE CAROUSEL -->
+    <section>
+      <div class="meal-section-heading">
+        <h2>Delicious meals to improve your blood sugar</h2>
+        <p class="note">
+          Real-world plates built around meat, protein, and simple sides&mdash;the kind of food your plan will lean on.
+        </p>
+      </div>
+      <div class="meal-carousel-wrapper">
+        <button class="carousel-btn left" type="button" onclick="scrollMeals(-1)">‹</button>
+        <div class="meal-carousel" id="mealCarousel">
+          <img src="https://stemandspoon.com/wp-content/uploads/2022/07/chicken-and-steak-stir-fry-recipe-13.jpg" alt="Chicken and steak stir fry plate." />
+          <img src="https://exploreketovore.com/wp-content/uploads/2023/08/Explore-Ketovore-Lion-Plate.jpg" alt="Ketovore style meat plate." />
+          <img src="https://exploreketovore.com/wp-content/uploads/2023/08/What-Can-I-Eat-on-Ketovore-Diet.jpg" alt="Various ketovore diet foods." />
+          <img src="https://www.womansworld.com/wp-content/uploads/2023/01/Sunny-side-up-eggs-with-bacon.jpg?quality=86&strip=all" alt="Sunny side up eggs with bacon." />
+          <img src="https://i.redd.it/3e0pm5flfz211.jpg" alt="Steak and asparagus plate." />
+          <img src="https://tastesbetterfromscratch.com/wp-content/uploads/2018/01/Chile-Verde-17.jpg" alt="Bowl of chile verde." />
+          <img src="https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_4:3/k%2Farchive%2Ff1e70c6c42d2bc62acd9773fe636c3870b936c1e" alt="Sheet pan meal with meat and vegetables." />
+          <img src="https://pinaenlacocina.com/wp-content/uploads/2022/12/IMG_5937.jpg" alt="Steak with salsa and side dishes." />
+        </div>
+        <button class="carousel-btn right" type="button" onclick="scrollMeals(1)">›</button>
+      </div>
+    </section>
+
+    <!-- SAFETY / MEDS WITH IMAGE -->
+    <section>
+      <div class="two-col" style="margin:0 auto;">
+        <div>
+          <h2>What about my medications—&nbsp;is this safe?</h2>
+          <p>
+            For most people with type 2 diabetes, it’s reasonable to:
+          </p>
+          <ul>
+            <li>Eat <strong>fewer carbs</strong></li>
+            <li>Eat <strong>more protein and meat</strong></li>
+            <li><strong>Walk daily</strong>, especially after meals</li>
+          </ul>
+          <p>
+            The main thing to watch:
+          </p>
+          <p>
+            <strong>When this starts working, your current doses can become stronger than you now need.</strong> That’s the win we’re aiming for&mdash;but you want to handle it safely.
+          </p>
+        </div>
+
+        <div>
+          <figure class="med-figure">
+            <img src="https://st.depositphotos.com/1010613/2705/i/450/depositphotos_27055047-stock-photo-male-doctor-holding-pills-in.jpg" alt="Male doctor holding pills in his hand." />
+          </figure>
+        </div>
+      </div>
+
+      <!-- Full-width med cards under image -->
+      <div class="med-cards">
+        <div class="med-card">
+          <h3>If you’re on insulin or sugar-lowering pills</h3>
+          <p>
+            We build your plan assuming you’ll:
+          </p>
+          <ul>
+            <li>Have a simple way to <strong>check blood sugar</strong> (basic meter is fine)</li>
+            <li>Let your doctor/clinic know what you’re doing, with a script like:</li>
+          </ul>
+          <p class="note">
+            “I’m starting a lower-carb, higher-protein way of eating and walking regularly for the next few weeks to improve my blood sugar. Can we talk about whether my doses might need adjusting or how often I should check my glucose while I do this?”
+          </p>
+          <p>
+            I never tell you <em>how</em> to change meds&mdash;that’s your clinician’s job. The plan’s job is to give you <strong>better numbers</strong> and <strong>clear data</strong> to bring into that conversation.
+          </p>
+        </div>
+
+        <div class="med-card">
+          <h3>If you’re not on meds that cause lows</h3>
+          <p>
+            If you’re managing T2D with diet alone or with meds that don’t cause low sugar, things are usually simpler:
+          </p>
+          <ul>
+            <li>Focus on food + walking from your plan</li>
+            <li>Track fasting and a few post-meal readings</li>
+            <li>Watch how your numbers respond over the 3 weeks</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="note" style="margin-top: 16px; text-align:center;">
+        <strong>This page is not medical advice.</strong> Always work with your own clinician on medication decisions.
+      </p>
+    </section>
+
+    <!-- WHO IT'S FOR WITH BAND -->
+    <section class="section-band">
+      <div class="section-narrow" style="margin:0 auto;">
+        <h2>Is this experiment for you?</h2>
+        <div class="columns-2">
+          <div class="col">
+            <div class="col-title">Good fit</div>
+            <h3>This <strong>is</strong> for you if:</h3>
+            <ul>
+              <li>You have <strong>type 2 diabetes or pre-diabetes</strong></li>
+              <li>You’re willing to change what you eat and walk regularly (within your limits)</li>
+              <li>You like the idea of <strong>using less medication over time</strong> if your doctor agrees it’s safe</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="col-title">Probably not a fit</div>
+            <h3>This may <strong>not</strong> be for you if:</h3>
+            <ul>
+              <li>You have <strong>type 1 diabetes</strong></li>
+              <li>You’re pregnant or breastfeeding</li>
+              <li>You have complex medical issues that make dietary changes risky without close supervision</li>
+              <li>You’re not willing to significantly reduce carbs for at least a few weeks</li>
+            </ul>
+            <p class="note">
+              If you’re unsure, check in with your clinician first.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ AS ACCORDION (centered wrapper, full width) -->
+    <section>
+      <div class="section-faq-center">
+        <h2>Common questions</h2>
+        <div class="accordion">
+          <details class="accordion-item" open>
+            <summary>Do I have to go full carnivore?</summary>
+            <div class="accordion-body">
+              <p>
+                No. The core idea is <strong>much lower carbs</strong>, <strong>more protein</strong>, and <strong>simple meals</strong>.
+                You can include low-sugar veggies and, if they fit your numbers and digestion, small amounts of other foods.
+                If you want to try strict carnivore, that’s your choice&mdash;but it’s not required.
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary>Is this safe with my meds?</summary>
+            <div class="accordion-body">
+              <p>
+                For most people, eating fewer carbs, more whole foods, and walking more is positive.
+                The main issue is that <strong>your meds may start working “too well”</strong> once your numbers improve.
+                That’s why we encourage a quick check-in with your doctor and simple glucose tracking, especially if you’re on insulin or sugar-lowering pills.
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary>What if I can’t walk very much?</summary>
+            <div class="accordion-body">
+              <p>
+                Do what you can. Even <strong>5–10 minutes of easy walking</strong> after meals can help.
+                If walking is limited for you, the <strong>food changes</strong> become even more important&mdash;and we’ll shape your plan with that in mind.
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary>What if my doctor doesn’t like low-carb?</summary>
+            <div class="accordion-body">
+              <p>
+                You don’t have to argue theory. You can simply say:
+              </p>
+              <p class="note">
+                “When I eat fewer carbs and walk, my numbers go down and I feel better.
+                How can we work together to do this safely?”
+              </p>
+              <p>
+                Most clinicians are happy when numbers improve in a way that’s safe and monitored.
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary>What if my numbers don’t change?</summary>
+            <div class="accordion-body">
+              <p>
+                Then we treat it as data, not failure. It may mean:
+              </p>
+              <ul>
+                <li>Your carbs weren’t quite low enough</li>
+                <li>Other factors (meds, sleep, stress) are playing a bigger role</li>
+                <li>You need more time or a different approach with your clinician</li>
+              </ul>
+              <p>
+                The point of the experiment is to <strong>learn what moves the needle for you</strong>, not to be perfect on day one.
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary>What happens after this 3-week experiment?</summary>
+            <div class="accordion-body">
+              <p>
+                Many people can make big progress just by <strong>lowering carbs, eating more protein/meat, and walking regularly</strong>.
+                If you complete this first experiment and want to go further, there’s a powerful “Journey 2” lever we can explore:
+                <strong>eating less often</strong> (shrinking your eating window).
+                That’s optional, more advanced, and best done once you’re already comfortable with the basics and working with your clinician.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / TRUST -->
+    <section>
+      <div class="two-col">
+        <div>
+          <h2>Who’s behind this (and why I care)</h2>
+          <p>
+            A while back, both my spouse and I got blood work we didn’t love. My A1C was creeping up, and my spouse’s blood sugar markers were moving in the wrong direction too.
+          </p>
+          <p>
+            We kept hearing “eat better, move more,” but no one was giving us a clear, simple plan that fit our actual lives.
+          </p>
+          <p>
+            I went deep on the research and started experimenting. What moved our numbers the fastest was a simple combo: <strong>fewer carbs, more meat/protein, and walking after meals</strong>&mdash;but <strong>tailored</strong> to when we worked, what we liked to eat, and what we could actually stick to.
+          </p>
+          <p>
+            Over the next few months, both my A1C and my spouse’s blood sugar improved. We felt better, had more stable energy, and saw changes we hadn’t been told were possible from “just” lifestyle.
+          </p>
+          <p>
+            I’m <strong>not</strong> a doctor. I’m someone obsessed with practical experiments that change real lab results and real lives.
+          </p>
+          <p>
+            This project&mdash;and the future AI intake it points toward&mdash;is my way of giving you the kind of <strong>simple, personalized experiment</strong> I wish we’d had at the start.
+          </p>
+        </div>
+
+        <div>
+          <figure class="about-photo">
+            <img src="https://i.imgur.com/ayNLNpk.png" alt="Photo of the creator of this T2D experiment." />
+          </figure>
+          <div class="x-link-wrap">
+            <a href="https://x.com/slayerment" target="_blank" rel="noopener" class="x-badge">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlSjNPRJt0l1rzDaa3vPGPffxSv1vHv1-S8Q&s"
+                alt="X logo"
+                class="x-icon-img"
+              />
+              <span>@slayerment</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section>
+      <div class="footer-cta">
+        <h2>Ready for a plan that fits your life instead of fighting it?</h2>
+        <p>
+          Fill out a short intake, get a custom 3-week T2D experiment, and aim for the day your doctor says,
+          <strong>“We can lower this dose.”</strong>
+        </p>
+        <a href="#" class="btn-primary">
+          <span>Start Your 3-Week Experiment – $29</span>
+          <span class="arrow">→</span>
+        </a>
+        <p class="note" style="margin-top: 12px;">
+          One-time payment. No subscription. Just a focused experiment built around your real life.
+        </p>
+      </div>
+    </section>
+
+    <!-- SITE FOOTER -->
+    <footer class="site-footer">
+      <div>©2025 Happy Healing</div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function scrollMeals(direction) {
+      const el = document.getElementById('mealCarousel');
+      if (!el) return;
+      const amount = el.clientWidth * 0.8;
+      el.scrollBy({ left: direction * amount, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
