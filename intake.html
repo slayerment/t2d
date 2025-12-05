@@ -2,19 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>3-Week T2D Experiment Intake – Happy Healing</title>
+  <title>Custom 3-Week T2D Experiment – Intake</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
       --bg: #f3f4f6;
       --card-bg: #ffffff;
-      --accent: #16a34a;
-      --accent-soft: rgba(22, 163, 74, 0.08);
-      --accent-strong: #15803d;
       --text: #111827;
       --text-soft: #4b5563;
-      --border-subtle: #e5e7eb;
       --muted: #6b7280;
+      --accent: #16a34a;
     }
 
     * {
@@ -32,9 +29,9 @@
     }
 
     .page {
-      max-width: 960px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 24px 16px 48px;
+      padding: 32px 20px 72px;
     }
 
     .brand-bar {
@@ -51,7 +48,7 @@
     }
 
     header {
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
 
     .badge {
@@ -79,167 +76,76 @@
     h1 {
       font-size: clamp(2rem, 3vw, 2.4rem);
       line-height: 1.1;
-      margin: 16px 0 10px;
+      margin: 18px 0 10px;
       letter-spacing: -0.04em;
       color: #0f172a;
     }
 
     p {
-      margin: 0 0 12px;
+      margin: 0 0 10px;
       color: var(--text-soft);
-      font-size: 1.02rem;
     }
 
-    .meta-note {
-      font-size: 0.9rem;
+    .lead {
+      font-size: 1.05rem;
+      max-width: 640px;
+    }
+
+    .meta-line {
+      font-size: 0.95rem;
       color: var(--muted);
-      margin-bottom: 4px;
+      margin-top: 8px;
     }
 
     .card {
       background: var(--card-bg);
       border-radius: 24px;
-      padding: 20px 18px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
-      margin-bottom: 20px;
+      padding: 22px 18px 26px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
     }
 
-    .card-header {
+    .note {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .site-footer {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid #e5e7eb;
       display: flex;
       flex-wrap: wrap;
-      align-items: baseline;
+      align-items: center;
       justify-content: space-between;
       gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .card-header h2 {
-      font-size: 1.4rem;
-      margin: 0;
-      letter-spacing: -0.03em;
-      color: #0f172a;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: #166534;
-      border: 1px solid rgba(22, 163, 74, 0.4);
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    ul {
-      margin: 0 0 10px 20px;
-      padding: 0;
-      color: var(--text-soft);
-      font-size: 0.98rem;
-    }
-
-    li {
-      margin-bottom: 6px;
-    }
-
-    .inline-highlight {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: #166534;
       font-size: 0.9rem;
-      border: 1px solid rgba(22, 163, 74, 0.4);
-    }
-
-    .iframe-card {
-      background: #ffffff;
-      border-radius: 24px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .iframe-header {
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--border-subtle);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      background: linear-gradient(to right, rgba(22, 163, 74, 0.04), #ffffff);
-    }
-
-    .iframe-header-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .iframe-header-text span.label {
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
       color: var(--muted);
     }
 
-    .iframe-header-text span.title {
-      font-size: 1rem;
-      color: #111827;
-      font-weight: 600;
+    .footer-links {
+      display: inline-flex;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
-    .iframe-fallback-link {
-      font-size: 0.85rem;
-      color: #1d4ed8;
+    .footer-links a {
+      color: #4b5563;
       text-decoration: none;
-      white-space: nowrap;
+      font-size: 0.9rem;
     }
 
-    .iframe-fallback-link:hover {
+    .footer-links a:hover {
       text-decoration: underline;
     }
 
-    .iframe-wrap {
-      width: 100%;
-      min-height: 900px;
-      border: none;
-    }
-
-    .footer-note {
-      margin-top: 12px;
-      font-size: 0.9rem;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    .footer-note strong {
-      color: #111827;
-    }
-
-    @media (max-width: 800px) {
+    @media (max-width: 700px) {
       .page {
-        padding: 20px 14px 40px;
+        padding: 24px 16px 60px;
       }
-      .iframe-wrap {
-        min-height: 1000px;
-      }
-    }
-
-    @media (max-width: 500px) {
-      .card {
-        padding: 16px 14px;
-      }
-      .iframe-header {
-        flex-direction: column;
-        align-items: flex-start;
+      .brand-logo {
+        max-height: 64px;
       }
     }
   </style>
@@ -248,96 +154,62 @@
   <div class="page">
     <!-- Brand -->
     <div class="brand-bar">
-      <img
-        src="https://lh3.googleusercontent.com/sitesv/AAzXCkfay-MG9OLkbWlRafj7vMCaBVFXxMOkVq_CS3yVu3tbzFdOk_97IisXaPupC70p_9rQpwoNBXE8cQyH0BROgVrmorpCPdNX568aENZhDM8rwQZvqU9E0TMkA_wY0NU1u1Re-nf11SfVKACbQZ8waf7-iITawu_DsrrAA1MhzHN42dZm8vdZxFvL=w1280"
-        alt="Happy Healing logo"
-        class="brand-logo"
-      />
+      <a href="index.html" aria-label="Back to main page">
+        <img
+          src="https://i.imgur.com/zoLpY0w.png"
+          alt="Happy Healing logo"
+          class="brand-logo"
+        />
+      </a>
     </div>
 
-    <!-- Header copy -->
+    <!-- Header -->
     <header>
       <div class="badge">
         <span class="badge-dot"></span>
-        <span>Step 2 · Your intake</span>
+        <span>Step 2 of 2 – Intake</span>
       </div>
-      <h1>Tell me about your real life so your plan fits it.</h1>
-      <p class="meta-note">
-        This takes about <strong>5–7 minutes</strong>. Honest, imperfect answers are better than “ideal” ones.
+      <h1>Tell me about your life so I can build your plan.</h1>
+      <p class="lead">
+        This quick intake (about 5–7 minutes) helps me shape your <strong>custom 3-week T2D experiment</strong> around your real routine, food preferences, and medications.
       </p>
-      <p>
-        Your intake is what lets me build a 3-week experiment that fits:
-      </p>
-      <ul>
-        <li>When you actually wake, work, and sleep</li>
-        <li>What you really eat now (no judgment)</li>
-        <li>How much walking or movement is realistic for you</li>
-        <li>What meds you’re on and what your main goals are</li>
-      </ul>
-      <p>
-        There are no “right” answers here. The goal is to capture your <strong>actual baseline</strong> so we can change your
-        numbers without blowing up your life.
-      </p>
-      <p>
-        <span class="inline-highlight">
-          Be real, not impressive. Your plan will be better for it.
-        </span>
+      <p class="meta-line">
+        Please answer as honestly and practically as you can. There’s no judgment—only data to design a plan you’ll actually follow.
       </p>
     </header>
 
-    <!-- Quick overview of what you'll ask (helps reduce form anxiety) -->
-    <div class="card">
-      <div class="card-header">
-        <h2>What this intake covers</h2>
-        <span class="pill">Keeps it to the essentials</span>
-      </div>
-      <ul>
-        <li><strong>Basics:</strong> Name, email, where you’re based</li>
-        <li><strong>Your diagnosis &amp; meds:</strong> T2D or pre-diabetes, what you’re taking, any history of lows</li>
-        <li><strong>Your routine:</strong> Wake time, work hours, bedtime, family rhythm</li>
-        <li><strong>Your food:</strong> Usual breakfast / lunch / dinner, snacks, foods you love &amp; foods you refuse</li>
-        <li><strong>Movement:</strong> How much you walk now, what feels realistic most days</li>
-        <li><strong>Your goals:</strong> Less meds, lower numbers, weight, energy, or all of the above</li>
-      </ul>
-      <p class="meta-note">
-        If you don’t know an exact number (like your latest A1C), it’s okay to give your best estimate or skip it.
-      </p>
-    </div>
+    <!-- Form card with Tally embed -->
+    <main class="card">
+      <p><strong>Fill out the form below to get started:</strong></p>
 
-    <!-- Tally embed -->
-    <div class="iframe-card">
-      <div class="iframe-header">
-        <div class="iframe-header-text">
-          <span class="label">Intake form</span>
-          <span class="title">Custom 3-Week T2D Experiment Intake</span>
-        </div>
-        <!-- Replace href with same Tally URL as iframe src -->
-        <a
-          class="iframe-fallback-link"
-          href="https://tally.so/r/YOUR_TALLY_FORM_ID"
-          target="_blank"
-          rel="noopener"
-        >
-          Open form in a new tab ↗
-        </a>
-      </div>
-
-      <!-- IMPORTANT: replace src with your actual Tally form URL -->
       <iframe
-        src="https://tally.so/r/YOUR_TALLY_FORM_ID?hideTitle=1"
+        data-tally-src="https://tally.so/embed/44QBVA?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1"
+        loading="lazy"
         width="100%"
-        class="iframe-wrap"
+        height="375"
         frameborder="0"
         marginheight="0"
         marginwidth="0"
-        title="Happy Healing T2D Intake Form"
-      ></iframe>
-    </div>
+        title="Custom 3-week type 2 diabetes lifestyle intake">
+      </iframe>
+      <script>
+        var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+      </script>
 
-    <div class="footer-note">
-      <strong>Reminder:</strong> This experiment is educational and lifestyle-focused. It’s not medical advice.
-      Always work with your own clinician on medication decisions.
-    </div>
+      <p class="note">
+        This intake is for educational and lifestyle-planning purposes only. It doesn’t replace medical care. Always work with your own clinician on diagnosis and medication decisions.
+      </p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div>©2025 Happy Healing. All Rights Reserved.</div>
+      <div class="footer-links">
+        <a href="index.html">Back to main page</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+    </footer>
   </div>
 </body>
 </html>
