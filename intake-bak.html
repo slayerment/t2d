@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>3-Week T2D Experiment Intake – Happy Healing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --accent: #16a34a;
+      --accent-soft: rgba(22, 163, 74, 0.08);
+      --accent-strong: #15803d;
+      --text: #111827;
+      --text-soft: #4b5563;
+      --border-subtle: #e5e7eb;
+      --muted: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #ffffff 0, #eef2ff 40%, #e5e7eb 100%);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      font-size: 18px;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    .brand-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .brand-logo {
+      max-height: 80px;
+      width: auto;
+      display: block;
+    }
+
+    header {
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.06);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      color: #1d4ed8;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 3vw, 2.4rem);
+      line-height: 1.1;
+      margin: 16px 0 10px;
+      letter-spacing: -0.04em;
+      color: #0f172a;
+    }
+
+    p {
+      margin: 0 0 12px;
+      color: var(--text-soft);
+      font-size: 1.02rem;
+    }
+
+    .meta-note {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 20px 18px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+      margin-bottom: 20px;
+    }
+
+    .card-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card-header h2 {
+      font-size: 1.4rem;
+      margin: 0;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #166534;
+      border: 1px solid rgba(22, 163, 74, 0.4);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    ul {
+      margin: 0 0 10px 20px;
+      padding: 0;
+      color: var(--text-soft);
+      font-size: 0.98rem;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .inline-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #166534;
+      font-size: 0.9rem;
+      border: 1px solid rgba(22, 163, 74, 0.4);
+    }
+
+    .iframe-card {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .iframe-header {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: linear-gradient(to right, rgba(22, 163, 74, 0.04), #ffffff);
+    }
+
+    .iframe-header-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .iframe-header-text span.label {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .iframe-header-text span.title {
+      font-size: 1rem;
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .iframe-fallback-link {
+      font-size: 0.85rem;
+      color: #1d4ed8;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .iframe-fallback-link:hover {
+      text-decoration: underline;
+    }
+
+    .iframe-wrap {
+      width: 100%;
+      min-height: 900px;
+      border: none;
+    }
+
+    .footer-note {
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .footer-note strong {
+      color: #111827;
+    }
+
+    @media (max-width: 800px) {
+      .page {
+        padding: 20px 14px 40px;
+      }
+      .iframe-wrap {
+        min-height: 1000px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .card {
+        padding: 16px 14px;
+      }
+      .iframe-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Brand -->
+    <div class="brand-bar">
+      <img
+        src="https://i.imgur.com/zoLpY0w.png"
+        alt="Happy Healing logo"
+        class="brand-logo"
+      />
+    </div>
+
+    <!-- Header copy -->
+    <header>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        <span>Step 2 · Your intake</span>
+      </div>
+      <h1>Tell me about your real life so your plan fits it.</h1>
+      <p class="meta-note">
+        This takes about <strong>5–7 minutes</strong>. Honest, imperfect answers are better than “ideal” ones.
+      </p>
+      <p>
+        Your intake is what lets me build a 3-week experiment that fits:
+      </p>
+      <ul>
+        <li>When you actually wake, work, and sleep</li>
+        <li>What you really eat now (no judgment)</li>
+        <li>How much walking or movement is realistic for you</li>
+        <li>What meds you’re on and what your main goals are</li>
+      </ul>
+      <p>
+        There are no “right” answers here. The goal is to capture your <strong>actual baseline</strong> so we can change your
+        numbers without blowing up your life.
+      </p>
+      <p>
+        <span class="inline-highlight">
+          Be real, not impressive. Your plan will be better for it.
+        </span>
+      </p>
+    </header>
+
+    <!-- Quick overview of what you'll ask (helps reduce form anxiety) -->
+    <div class="card">
+      <div class="card-header">
+        <h2>What this intake covers</h2>
+        <span class="pill">Keeps it to the essentials</span>
+      </div>
+      <ul>
+        <li><strong>Basics:</strong> Name, email, where you’re based</li>
+        <li><strong>Your diagnosis &amp; meds:</strong> T2D or pre-diabetes, what you’re taking, any history of lows</li>
+        <li><strong>Your routine:</strong> Wake time, work hours, bedtime, family rhythm</li>
+        <li><strong>Your food:</strong> Usual breakfast / lunch / dinner, snacks, foods you love &amp; foods you refuse</li>
+        <li><strong>Movement:</strong> How much you walk now, what feels realistic most days</li>
+        <li><strong>Your goals:</strong> Less meds, lower numbers, weight, energy, or all of the above</li>
+      </ul>
+      <p class="meta-note">
+        If you don’t know an exact number (like your latest A1C), it’s okay to give your best estimate or skip it.
+      </p>
+    </div>
+
+    <!-- Tally embed -->
+    <div class="iframe-card">
+      <div class="iframe-header">
+        <div class="iframe-header-text">
+          <span class="label">Intake form</span>
+          <span class="title">Custom 3-Week T2D Experiment Intake</span>
+        </div>
+        <!-- Replace href with same Tally URL as iframe src -->
+        <a
+          class="iframe-fallback-link"
+          href="https://tally.so/r/YOUR_TALLY_FORM_ID"
+          target="_blank"
+          rel="noopener"
+        >
+          Open form in a new tab ↗
+        </a>
+      </div>
+
+      <!-- IMPORTANT: replace src with your actual Tally form URL -->
+      <iframe
+        src="https://tally.so/r/YOUR_TALLY_FORM_ID?hideTitle=1"
+        width="100%"
+        class="iframe-wrap"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Happy Healing T2D Intake Form"
+      ></iframe>
+    </div>
+
+    <div class="footer-note">
+      <strong>Reminder:</strong> This experiment is educational and lifestyle-focused. It’s not medical advice.
+      Always work with your own clinician on medication decisions.
+    </div>
+  </div>
+</body>
+</html>
